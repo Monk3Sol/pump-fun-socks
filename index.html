@@ -93,6 +93,7 @@
             transition: transform 0.3s ease;
             transform: scale(1.5);
             mix-blend-mode: multiply;
+            z-index: 1;
         }
 
         .socks-image:hover {
@@ -100,6 +101,8 @@
         }
 
         .card-text {
+            position: relative;
+            z-index: 2;
             color: #1a1b23;
             margin: 20px 0;
         }
