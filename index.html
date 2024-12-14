@@ -431,15 +431,15 @@
 
         // Función para ir a comprar el token
         function buyToken() {
-            // URL de Jupiter para comprar PUMP
-            const jupiterUrl = 'https://jup.ag/swap/SOL-PUMP_HgBRWfYxEfvPhtqkaeymCQtHCrKE46qQ43pKe8HCpump';
+            // Cambia esta URL por la de tu propio token
+            const jupiterUrl = 'https://tu-nueva-url-para-comprar-token.com';
             window.open(jupiterUrl, '_blank');
         }
 
         // Función para ver el gráfico
         function viewChart() {
-            // URL de Birdeye para ver el gráfico de PUMP
-            const chartUrl = 'https://birdeye.so/token/HgBRWfYxEfvPhtqkaeymCQtHCrKE46qQ43pKe8HCpump';
+            // Cambia esta URL por la del gráfico de tu propio token
+            const chartUrl = 'https://tu-nueva-url-para-ver-grafico.com';
             window.open(chartUrl, '_blank');
         }
 
@@ -448,7 +448,7 @@
             popup.className = 'popup-overlay';
             popup.innerHTML = `
                 <div class="popup">
-                    <p class="popup-message">Redeem available soon</p>
+                    <p class="popup-message">Redeem will be available on 12/15 at 23:59 UTC</p>
                     <button class="popup-close" onclick="closePopup()">Close</button>
                 </div>
             `;
