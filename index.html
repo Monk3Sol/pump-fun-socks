@@ -418,15 +418,19 @@
             closePopup();
         }
 
-        // Función simplificada para mostrar el precio
-        function getTokenPrice() {
+        async function getTokenPrice() {
             try {
-                // Precio hardcodeado por ahora
-                const tokenPrice = 0.0420;
-                const sockPrice = (tokenPrice * 1586200).toFixed(2);
-                document.querySelector('.price').innerHTML = `$${sockPrice} USD`;
+                const response = await fetch('https://api.pump.fun/v1/token-price?token=8tvPUfxCuNVmhZXfNBqXgmAZQEU43N6TBrEr9UJ2pump');
+                const data = await response.json();
+                const tokenPrice = parseFloat(data.price);
+                if (!isNaN(tokenPrice)) {
+                    const sockPrice = (tokenPrice * 1586200).toFixed(2);
+                    document.querySelector('.price').innerHTML = `$${sockPrice} USD`;
+                } else {
+                    throw new Error('Precio no válido');
+                }
             } catch (err) {
-                console.error('Error al mostrar el precio:', err);
+                console.error('Error al obtener el precio:', err);
                 document.querySelector('.price').innerHTML = 'Price unavailable';
             }
         }
@@ -489,8 +493,7 @@
             <img src="/images/socks.png" alt="Socks" class="socks-image">
             <p class="price">$0.0420 USD</p>
             <p class="card-text">
-                Buy and sell real socks with digital currency.<br>
-                Delivered on demand. <a href="learn.html" class="learn-more">Learn more</a>
+                Buy a piece of history with <span class="highlight">$SOCKS</span>. Worldwide free shipping. <a href="learn.html" class="learn-more">Learn more</a>
             </p>
         </div>
         <div class="buttons-container">
