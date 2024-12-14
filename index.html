@@ -418,19 +418,14 @@
             closePopup();
         }
 
-        async function getTokenPrice() {
+        function getTokenPrice() {
             try {
-                const response = await fetch('https://api.pump.fun/v1/token-price?token=8tvPUfxCuNVmhZXfNBqXgmAZQEU43N6TBrEr9UJ2pump');
-                const data = await response.json();
-                const tokenPrice = parseFloat(data.price);
-                if (!isNaN(tokenPrice)) {
-                    const sockPrice = (tokenPrice * 1586200).toFixed(2);
-                    document.querySelector('.price').innerHTML = `$${sockPrice} USD`;
-                } else {
-                    throw new Error('Precio no válido');
-                }
+                // Precio hardcodeado
+                const tokenPrice = 0.0420;
+                const sockPrice = (tokenPrice * 1586200).toFixed(2);
+                document.querySelector('.price').innerHTML = `$${sockPrice} USD`;
             } catch (err) {
-                console.error('Error al obtener el precio:', err);
+                console.error('Error al mostrar el precio:', err);
                 document.querySelector('.price').innerHTML = 'Price unavailable';
             }
         }
@@ -491,7 +486,7 @@
             <h2>PUMP FUN SOCKS</h2>
             <p class="subtitle">$SOCKS</p>
             <img src="/images/socks.png" alt="Socks" class="socks-image">
-            <p class="price">$0.0420 USD</p>
+            <p class="price">$0.00420 USD</p>
             <p class="card-text">
                 Buy a piece of history with <span class="highlight">$SOCKS</span>. Worldwide free shipping. <a href="learn.html" class="learn-more">Learn more</a>
             </p>
