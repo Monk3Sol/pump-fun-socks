@@ -417,21 +417,17 @@
         function getTokenPrice() {
             try {
                 // Precio hardcodeado por ahora
-                const price = "0.0420";
-                document.querySelector('.price').innerHTML = `$${price} USD`;
+                const tokenPrice = 0.0420;
+                const sockPrice = (tokenPrice * 1586200).toFixed(2);
+                document.querySelector('.price').innerHTML = `$${sockPrice} USD`;
             } catch (err) {
                 console.error('Error al mostrar el precio:', err);
                 document.querySelector('.price').innerHTML = 'Price unavailable';
             }
         }
 
-        // Ya no necesitamos actualización automática por ahora
-        function startPriceUpdates() {
-            getTokenPrice();
-        }
-
         // Iniciamos la actualización de precios cuando se carga la página
-        document.addEventListener('DOMContentLoaded', startPriceUpdates);
+        document.addEventListener('DOMContentLoaded', getTokenPrice);
 
         // Función para ir a comprar el token
         function buyToken() {
