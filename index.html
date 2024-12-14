@@ -76,10 +76,11 @@
             height: auto;
             margin: 20px 0;
             transition: transform 0.3s ease;
+            transform: scale(1.5);
         }
 
         .socks-image:hover {
-            transform: scale(1.05);
+            transform: scale(1.55);
         }
 
         .card-text {
@@ -317,6 +318,12 @@
             font-size: 16px;
             border: 2px solid #00ffdd;
         }
+
+        .subtitle {
+            color: #666;
+            margin: 0 0 15px 0;
+            font-size: 16px;
+        }
     </style>
     <script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.min.js"></script>
     <script>
@@ -453,8 +460,9 @@
     <div class="card-container">
         <div class="card">
             <h2>PUMP FUN SOCKS</h2>
-            <p class="price">$XXXX USD</p>
-            <img src="/images/socks.jpg" alt="Socks" class="socks-image">
+            <p class="subtitle">$SOCKS</p>
+            <p class="price">$0.0420 USD</p>
+            <img src="/images/socks.png" alt="Socks" class="socks-image">
             <p class="card-text">
                 Buy and sell real socks with digital currency.<br>
                 Delivered on demand. <a href="learn.html" class="learn-more">Learn more</a>
