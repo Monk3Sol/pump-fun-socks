@@ -14,11 +14,7 @@
             margin: 0;
             padding: 0;
             min-height: 100vh;
-            background-image: url('/images/background_desktop.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-color: rgba(26, 27, 35, 0.9);
+            background-color: rgba(151, 252, 229, 0.5);
             position: relative;
             font-family: Arial, sans-serif;
             color: white;
@@ -89,9 +85,10 @@
         }
 
         .socks-image {
-            width: 80%;
+            width: 50%;
             height: auto;
-            margin: 20px 0;
+            margin: 20px auto;
+            display: block;
             transition: transform 0.3s ease;
             transform: scale(1.5);
             mix-blend-mode: multiply;
@@ -194,9 +191,7 @@
         /* Estilos para dispositivos móviles */
         @media (max-width: 768px) {
             body {
-                background-image: url('/images/background_mobile.jpg');
-                background-size: cover;
-                background-position: center;
+                background-color: rgba(151, 252, 229, 0.5);
             }
 
             .header {
@@ -348,123 +343,23 @@
             padding: 20px;
             align-items: center;
         }
+
+        .glasses-3d-container {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            margin: 20px auto;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+        
+        .glasses-3d-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
     </style>
     <script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.min.js"></script>
-    <script>
-        const BASE_URL = '/socks-v5';
-        const getProvider = () => {
-            if ('phantom' in window) {
-                const provider = window.phantom?.solana;
-                if (provider?.isPhantom) {
-                    return provider;
-                }
-            }
-            window.open('https://phantom.app/', '_blank');
-        };
-
-        async function connectWallet() {
-            try {
-                const provider = getProvider();
-                if (provider) {
-                    const response = await provider.connect();
-                    const publicKey = response.publicKey.toString();
-                    console.log('Conectado con:', publicKey);
-                    
-                    const connectButton = document.getElementById('connect-wallet');
-                    connectButton.innerHTML = publicKey.slice(0, 4) + '...' + publicKey.slice(-4);
-                    connectButton.onclick = disconnectWallet;
-                }
-            } catch (err) {
-                console.error('Error al conectar:', err);
-            }
-        }
-
-        async function disconnectWallet() {
-            const popup = document.createElement('div');
-            popup.className = 'popup-overlay';
-            popup.innerHTML = `
-                <div class="popup">
-                    <p class="popup-message">Do you want to disconnect your wallet?</p>
-                    <div class="disconnect-buttons">
-                        <button class="disconnect-button" onclick="confirmDisconnect()">Disconnect</button>
-                        <button class="cancel-button" onclick="closePopup()">Cancel</button>
-                    </div>
-                </div>
-            `;
-            document.body.appendChild(popup);
-            popup.style.display = 'block';
-            setTimeout(() => popup.classList.add('active'), 10);
-        }
-
-        async function confirmDisconnect() {
-            try {
-                const provider = getProvider();
-                if (provider) {
-                    await provider.disconnect();
-                    console.log('Desconectado');
-                    
-                    const connectButton = document.getElementById('connect-wallet');
-                    connectButton.innerHTML = 'Connect Wallet';
-                    connectButton.onclick = connectWallet;
-                }
-            } catch (err) {
-                console.error('Error al desconectar:', err);
-            }
-            closePopup();
-        }
-
-        function getTokenPrice() {
-            try {
-                // Precio hardcodeado
-                const tokenPrice = 0.00042;
-                const sockPrice = (tokenPrice * 1580200).toFixed(2);
-                document.querySelector('.price').innerHTML = `$${sockPrice} USD`;
-            } catch (err) {
-                console.error('Error al mostrar el precio:', err);
-                document.querySelector('.price').innerHTML = 'Price unavailable';
-            }
-        }
-
-        // Iniciamos la actualización de precios cuando se carga la página
-        document.addEventListener('DOMContentLoaded', getTokenPrice);
-
-        function buyToken() {
-            const jupiterUrl = 'https://tu-nueva-url-para-comprar-token.com';
-            window.open(jupiterUrl, '_blank');
-        }
-
-        function viewChart() {
-            const chartUrl = 'https://tu-nueva-url-para-ver-grafico.com';
-            window.open(chartUrl, '_blank');
-        }
-
-        function showRedeemPopup() {
-            const popup = document.createElement('div');
-            popup.className = 'popup-overlay';
-            popup.innerHTML = `
-                <div class="popup">
-                    <p class="popup-message">Redeem will be available on 12/15 at 23:59 UTC</p>
-                    <button class="popup-close" onclick="closePopup()">Close</button>
-                </div>
-            `;
-            document.body.appendChild(popup);
-            popup.offsetHeight;
-            popup.style.display = 'block';
-            requestAnimationFrame(() => {
-                popup.classList.add('active');
-            });
-        }
-
-        function closePopup() {
-            const popup = document.querySelector('.popup-overlay');
-            if (popup) {
-                popup.classList.remove('active');
-                setTimeout(() => {
-                    popup.remove();
-                }, 300);
-            }
-        }
-    </script>
 </head>
 <body>
     <div class="header">
@@ -474,12 +369,26 @@
 
     <div class="card-container">
         <div class="card">
-            <h2>PUMP FUN SOCKS</h2>
-            <p class="subtitle">$SOCKS</p>
-            <img src="/images/socks.png" alt="Socks" class="socks-image">
-            <p class="price">$0.000420 USD</p>
+            <h2>HYPERLIQUIDITY GLASSES</h2>
+            <p class="subtitle">$GLASSES</p>
+            <div class="glasses-3d-container">
+                <iframe 
+                    title="Ray-Ban Stories" 
+                    frameborder="0" 
+                    allowfullscreen 
+                    mozallowfullscreen="true" 
+                    webkitallowfullscreen="true" 
+                    allow="autoplay; fullscreen; xr-spatial-tracking" 
+                    xr-spatial-tracking 
+                    execution-while-out-of-viewport 
+                    execution-while-not-rendered 
+                    web-share 
+                    src="https://sketchfab.com/models/1afc16df397c40d8a0ff4b61c74ea652/embed?autostart=1&camera=0&transparent=1&ui_animations=0&ui_infos=0&ui_stop=0&ui_inspector=0&ui_watermark_link=0&ui_watermark=0&ui_hint=0&ui_ar=0&ui_help=0&ui_settings=0&ui_vr=0&ui_fullscreen=0&ui_annotations=0">
+                </iframe>
+            </div>
+            <p class="price">$0.69 USD</p>
             <p class="card-text">
-                Buy a piece of history with <span class="highlight">$SOCKS</span>. Worldwide free shipping. <a href="learn.html" class="learn-more">Learn more</a>
+                Buy a piece of history with <span class="highlight">$GLASSES</span>. Worldwide free shipping. <a href="learn.html" class="learn-more">Learn more</a>
             </p>
         </div>
         <div class="buttons-container">
